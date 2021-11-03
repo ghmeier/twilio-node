@@ -37,13 +37,17 @@ describe('SyncListItem', function() {
 
       var promise = client.sync.v1.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
                                   .syncLists('ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-                                  .syncListItems(1).fetch();
-      promise.then(function() {
-        throw new Error('failed');
-      }, function(error) {
-        expect(error.constructor).toBe(RestException.prototype.constructor);
-        done();
-      }).done();
+                                  .syncListItems.page({pageNumber: 2, pageToken : '123'})
+          })
+    // promise.then(function(response) {
+    //     response.fetch()
+    //     throw new Error('failed');
+    // }, function(error) {
+    //     expect(error.constructor).toBe(RestException.prototype.constructor);
+    //     done();
+    // }).done();
+
+        client.chat.v1.services('ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX').channels('').messages.pa
 
       var serviceSid = 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
       var listSid = 'ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
